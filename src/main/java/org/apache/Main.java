@@ -26,6 +26,7 @@ public class Main {
 
 		@Override
 		public int run(String... args) throws Exception {
+						
 			logger.info("Kafka emission started !!");
 			UserService userService = new UserService();
 			AccountService accountService = new AccountService();
@@ -37,11 +38,12 @@ public class Main {
 			relationService.stream();
 			userGroupService.stream();
 			accessRightService.stream();
+			
 			logger.info("Threads started !!");
 			logger.info("Spark job started !!");
 			ThreadExecutor executor = new ThreadExecutor();
-			executor.execute();	
-		   
+			executor.execute();
+			
             Quarkus.waitForExit();
             return 0;
 		}
