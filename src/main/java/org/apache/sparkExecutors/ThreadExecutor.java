@@ -21,7 +21,8 @@ public class ThreadExecutor {
 	    executor.submit(worker.setThread("UserIngestion",lock, condition, "UserIngestion", "AccountIngestion", threadName));
 	    executor.submit(worker.setThread("AccountIngestion",lock, condition, "AccountIngestion", "AccessRightIngestion", threadName));
 	    executor.submit(worker.setThread("AccessRightIngestion",lock, condition, "AccessRightIngestion", "UserGroupIngestion", threadName));
-	    executor.submit(worker.setThread("UserGroupIngestion",lock, condition, "UserGroupIngestion", "RelationIngestion", threadName));
+	    executor.submit(worker.setThread("UserGroupIngestion",lock, condition, "UserGroupIngestion", "ApplicationIngestion", threadName));
+	    executor.submit(worker.setThread("ApplicationIngestion",lock, condition, "ApplicationIngestion", "RelationIngestion", threadName));
 	    executor.submit(worker.setThread("RelationIngestion",lock, condition, "RelationIngestion", "TakingRest", threadName));
 	    executor.submit(worker.setThread("TakingRest",lock, condition, "TakingRest", "UserIngestion", threadName));
 	}

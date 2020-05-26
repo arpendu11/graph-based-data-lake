@@ -32,7 +32,7 @@ public class AccessRightService {
 	public Flowable<String> stream() {
 		Gson gson = new Gson();
 		return Flowable
-				.interval(1, 10, TimeUnit.MINUTES)
+				.interval(10, 360, TimeUnit.MINUTES)
 				.map(new Function<Long, List<AccessRight>>() {
 					@Override
 					public List<AccessRight> apply(Long t) throws Exception {

@@ -34,7 +34,7 @@ public class AccountService {
 	public Flowable<String> stream() {
 		Gson gson = new Gson();
 		return Flowable
-				.interval(1, 10, TimeUnit.MINUTES)
+				.interval(5, 360, TimeUnit.MINUTES)
 				.map(new Function<Long, List<Account>>() {
 					@Override
 					public List<Account> apply(Long t) throws Exception {

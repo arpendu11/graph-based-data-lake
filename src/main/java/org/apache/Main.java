@@ -3,6 +3,7 @@ package org.apache;
 import org.apache.sparkExecutors.ThreadExecutor;
 import org.practice.services.AccessRightService;
 import org.practice.services.AccountService;
+import org.practice.services.ApplicationService;
 import org.practice.services.RelationService;
 import org.practice.services.UserGroupService;
 import org.practice.services.UserService;
@@ -26,18 +27,22 @@ public class Main {
 
 		@Override
 		public int run(String... args) throws Exception {
-						
+			
+			System.setProperty("hadoop.home.dir", "D:\\winutils");
+			
 			logger.info("Kafka emission started !!");
 			UserService userService = new UserService();
 			AccountService accountService = new AccountService();
 			RelationService relationService = new RelationService();
 			UserGroupService userGroupService = new UserGroupService();
 			AccessRightService accessRightService = new AccessRightService();
+			ApplicationService applicationService = new ApplicationService();
 			userService.stream();
 			accountService.stream();
 			relationService.stream();
 			userGroupService.stream();
 			accessRightService.stream();
+			applicationService.stream();
 			
 			logger.info("Threads started !!");
 			logger.info("Spark job started !!");

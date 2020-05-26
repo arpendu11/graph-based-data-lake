@@ -34,7 +34,7 @@ public class UserService {
 	public Flowable<String> stream() {
 		Gson gson = new Gson();
 		return Flowable
-				.interval(1, 10, TimeUnit.MINUTES)
+				.interval(1, 360, TimeUnit.MINUTES)
 				.map(new Function<Long, List<User>>() {
 					@Override
 					public List<User> apply(Long t) throws Exception {

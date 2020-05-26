@@ -32,7 +32,7 @@ public class UserGroupService {
 	public Flowable<String> stream() {
 		Gson gson = new Gson();
 		return Flowable
-				.interval(1, 10, TimeUnit.MINUTES)
+				.interval(15, 360, TimeUnit.MINUTES)
 				.map(new Function<Long, List<UserGroup>>() {
 					@Override
 					public List<UserGroup> apply(Long t) throws Exception {

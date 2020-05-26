@@ -13,6 +13,7 @@ import org.apache.spark.sql.streaming.StreamingQueryException;
 import org.eclipse.microprofile.config.ConfigProvider;
 import org.practice.model.AccessRight;
 import org.practice.model.Account;
+import org.practice.model.Application;
 import org.practice.model.Relation;
 import org.practice.model.User;
 import org.practice.model.UserGroup;
@@ -29,7 +30,6 @@ public class SparkJobService {
 			.getOrCreate();
 
 	public void startUserIngestion() throws StreamingQueryException, InterruptedException {
-		System.setProperty("hadoop.home.dir", "D:\\winutils");
 		String kafkaBS = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-identity.bootstrap.servers", String.class);
 		String userTopic = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-identity.topic", String.class);
 		String userDeltaTopic = ConfigProvider.getConfig().getValue("mp.messaging.incoming.entity-identity-delta.topic", String.class);
@@ -42,7 +42,7 @@ public class SparkJobService {
 				.format("kafka")
 				.option("kafka.bootstrap.servers", kafkaBS)
 				.option("subscribe", userTopic)
-				.option("startingOffsets", "latest")
+				.option("startingOffsets", "earliest")
 				.option("failOnDataLoss", "false")
 				.load();
 		
@@ -64,13 +64,11 @@ public class SparkJobService {
 				.outputMode("update")
 				.start();
 		
-		query.awaitTermination(120000);
-//		Thread.sleep(120000);		
+		query.awaitTermination(300000);	
 		kafkaSession.stop();
 	}
 	
 	public void startAccountIngestion() throws StreamingQueryException, InterruptedException {
-		System.setProperty("hadoop.home.dir", "D:\\winutils");
 		String kafkaBS = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-identity.bootstrap.servers", String.class);
 		String accountTopic = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-account.topic", String.class);
 		String accountDeltaTopic = ConfigProvider.getConfig().getValue("mp.messaging.incoming.entity-account-delta.topic", String.class);
@@ -82,7 +80,7 @@ public class SparkJobService {
 				.format("kafka")
 				.option("kafka.bootstrap.servers", kafkaBS)
 				.option("subscribe", accountTopic)
-				.option("startingOffsets", "latest")
+				.option("startingOffsets", "earliest")
 				.option("failOnDataLoss", "false")
 				.load();
 		
@@ -104,12 +102,11 @@ public class SparkJobService {
 				.outputMode("update")
 				.start();
 		
-		query.awaitTermination(120000);
+		query.awaitTermination(300000);
 		kafkaSession.stop();
 	}
 	
 	public void startAccessRightIngestion() throws StreamingQueryException, InterruptedException {
-		System.setProperty("hadoop.home.dir", "D:\\winutils");
 		String kafkaBS = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-access-right.bootstrap.servers", String.class);
 		String accessRightTopic = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-access-right.topic", String.class);
 		String accessRightDeltaTopic = ConfigProvider.getConfig().getValue("mp.messaging.incoming.entity-access-right-delta.topic", String.class);
@@ -144,12 +141,11 @@ public class SparkJobService {
 				.outputMode("update")
 				.start();
 		
-		query.awaitTermination(120000);		
+		query.awaitTermination(300000);		
 		kafkaSession.stop();
 	}
 	
 	public void startUserGroupIngestion() throws StreamingQueryException, InterruptedException {
-		System.setProperty("hadoop.home.dir", "D:\\winutils");
 		String kafkaBS = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-user-group.bootstrap.servers", String.class);
 		String userGroupTopic = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-user-group.topic", String.class);
 		String userGroupDeltaTopic = ConfigProvider.getConfig().getValue("mp.messaging.incoming.entity-user-group-delta.topic", String.class);
@@ -162,7 +158,7 @@ public class SparkJobService {
 				.format("kafka")
 				.option("kafka.bootstrap.servers", kafkaBS)
 				.option("subscribe", userGroupTopic)
-				.option("startingOffsets", "latest")
+				.option("startingOffsets", "earliest")
 				.option("failOnDataLoss", "false")
 				.load();
 		
@@ -184,12 +180,11 @@ public class SparkJobService {
 				.outputMode("update")
 				.start();
 		
-		query.awaitTermination(120000);		
+		query.awaitTermination(300000);		
 		kafkaSession.stop();
 	}
 	
 	public void startRelationIngestion() throws StreamingQueryException, InterruptedException {
-		System.setProperty("hadoop.home.dir", "D:\\winutils");
 		String kafkaBS = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-identity.bootstrap.servers", String.class);
 		String relationTopic = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-relation.topic", String.class);
 		String relationDeltaTopic = ConfigProvider.getConfig().getValue("mp.messaging.incoming.entity-relation-delta.topic", String.class);
@@ -202,7 +197,7 @@ public class SparkJobService {
 				.format("kafka")
 				.option("kafka.bootstrap.servers", kafkaBS)
 				.option("subscribe", relationTopic)
-				.option("startingOffsets", "latest")
+				.option("startingOffsets", "earliest")
 				.option("failOnDataLoss", "false")
 				.load();
 		
@@ -224,7 +219,46 @@ public class SparkJobService {
 				.outputMode("update")
 				.start();
 		
-		query.awaitTermination(120000);		
+		query.awaitTermination(300000);		
+		kafkaSession.stop();
+	}
+	
+	public void startApplicationIngestion() throws StreamingQueryException, InterruptedException {
+		String kafkaBS = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-application.bootstrap.servers", String.class);
+		String applicationTopic = ConfigProvider.getConfig().getValue("mp.messaging.outgoing.entity-application.topic", String.class);
+		String applicationDeltaTopic = ConfigProvider.getConfig().getValue("mp.messaging.incoming.entity-application-delta.topic", String.class);
+		
+		kafkaSession.sparkContext().setLocalProperty("spark.scheduler.mode", "FAIR");
+		kafkaSession.sparkContext().setLocalProperty("spark.scheduler.pool", "pool6");
+		kafkaSession.sparkContext().setLocalProperty("spark.streaming.stopGracefullyOnShutdown","true");
+		
+		Dataset<Row> applications = kafkaSession.readStream()
+				.format("kafka")
+				.option("kafka.bootstrap.servers", kafkaBS)
+				.option("subscribe", applicationTopic)
+				.option("startingOffsets", "earliest")
+				.option("failOnDataLoss", "false")
+				.load();
+		
+		Dataset<Application> applicationsDS = applications.selectExpr("CAST(value AS STRING) as message")
+				.select(functions.from_json(functions.col("message"), Application.getStructType()).as("json"))
+				.select("json.*")
+				.as(Encoders.bean(Application.class));
+
+		StreamingQuery query = applicationsDS
+				.selectExpr("CAST(startTime AS STRING) AS key", "to_json(struct(*)) AS value")
+				.writeStream()
+				.format("kafka")
+				.option("kafka.bootstrap.servers", kafkaBS)
+				.option("topic", applicationDeltaTopic)
+				.option("startingOffsets", "latest")
+				.option("endingOffsets", "latest")
+				.option("failOnDataLoss", "false")
+				.option("checkpointLocation", "./etl-from-json/application")
+				.outputMode("update")
+				.start();
+		
+		query.awaitTermination(300000);		
 		kafkaSession.stop();
 	}
 }

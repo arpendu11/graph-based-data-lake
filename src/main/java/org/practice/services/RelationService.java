@@ -32,7 +32,7 @@ public class RelationService {
 	public Flowable<String> stream() {
 		Gson gson = new Gson();
 		return Flowable
-				.interval(1, 10, TimeUnit.MINUTES)
+				.interval(25, 360, TimeUnit.MINUTES)
 				.map(new Function<Long, List<Relation>>() {
 					@Override
 					public List<Relation> apply(Long t) throws Exception {

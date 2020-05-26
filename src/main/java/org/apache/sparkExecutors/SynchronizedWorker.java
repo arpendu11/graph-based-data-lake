@@ -51,13 +51,17 @@ public class SynchronizedWorker {
 							sparkJob.startUserGroupIngestion();
 							break;
 							
+						case "ApplicationIngestion":
+							sparkJob.startApplicationIngestion();
+							break;
+							
 						case "RelationIngestion":
 							sparkJob.startRelationIngestion();
 							break;
 							
 						default:
 							logger.info("Nothing to do... Taking some rest...!!");
-							Thread.sleep(60000);
+							Thread.sleep(120000);
 							logger.info("Wake up... Time to start working again...!!");
 							break;
 						}
