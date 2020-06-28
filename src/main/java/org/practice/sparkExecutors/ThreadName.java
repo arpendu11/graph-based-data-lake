@@ -1,4 +1,4 @@
-package org.apache.sparkExecutors;
+package org.practice.sparkExecutors;
 
 class ThreadName {
     private String name;

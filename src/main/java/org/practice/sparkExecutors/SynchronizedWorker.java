@@ -1,4 +1,4 @@
-package org.apache.sparkExecutors;
+package org.practice.sparkExecutors;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

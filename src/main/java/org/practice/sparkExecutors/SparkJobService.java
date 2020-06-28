@@ -1,4 +1,4 @@
-package org.apache.sparkExecutors;
+package org.practice.sparkExecutors;
 
 import javax.enterprise.context.ApplicationScoped;
 

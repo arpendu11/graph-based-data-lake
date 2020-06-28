@@ -1,12 +1,12 @@
-package org.apache;
+package org.practice;
 
-import org.apache.sparkExecutors.ThreadExecutor;
 import org.practice.services.AccessRightService;
 import org.practice.services.AccountService;
 import org.practice.services.ApplicationService;
 import org.practice.services.RelationService;
 import org.practice.services.UserGroupService;
 import org.practice.services.UserService;
+import org.practice.sparkExecutors.ThreadExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
