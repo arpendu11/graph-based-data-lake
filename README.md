@@ -12,6 +12,7 @@ You can follow this series to know stage by stage implementation:
 [Full Stack: Remastering Master Data Management into graph like data](https://hashnode.com/series/full-stack-remastering-master-data-management-into-graph-like-data-ckbyotel2009raws15hejhgzp)
 
 You can find the repo being used for:
+* [Introduction and Prerequisites: Need for data-hub or data-lake for MDM](https://arpendu.hashnode.dev/1-introduction-and-prerequisites-need-for-data-hub-or-data-lake-for-mdm-ckbyrlq8h00b2bus1e8ar1z23)
 * [Quarkus: yet another framework like Spring Boot](https://arpendu.hashnode.dev/2-quarkus-yet-another-framework-like-spring-boot-ckbza8m2a000lgps17p476n3r)
 * [Reactive Stream messaging in Java using Quarkus](https://arpendu.hashnode.dev/3-reactive-stream-messaging-in-java-using-quarkus-ckc269cqu00g091s1el5pgjdn)
 * [Spark SQL Structured Streaming with Kafka](https://arpendu.hashnode.dev/4-spark-sql-structured-streaming-with-kafka-ckc7aez4900777is1ekl66p9m)
