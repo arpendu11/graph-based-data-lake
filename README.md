@@ -4,7 +4,18 @@ An ETL application which is written in Quarkus, Spark SQL Streaming, Neo4j and v
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+If you want to learn more about Quarkus, please visit its website: https://quarkus.io/.
+
+## Explanation
+
+You can follow this series to know stage by stage implementation: 
+[Full Stack: Remastering Master Data Management into graph like data](https://hashnode.com/series/full-stack-remastering-master-data-management-into-graph-like-data-ckbyotel2009raws15hejhgzp)
+
+You can find the repo being used for:
+* [Quarkus: yet another framework like Spring Boot](https://arpendu.hashnode.dev/2-quarkus-yet-another-framework-like-spring-boot-ckbza8m2a000lgps17p476n3r)
+* [Reactive Stream messaging in Java using Quarkus](https://arpendu.hashnode.dev/3-reactive-stream-messaging-in-java-using-quarkus-ckc269cqu00g091s1el5pgjdn)
+* [Spark SQL Structured Streaming with Kafka](https://arpendu.hashnode.dev/4-spark-sql-structured-streaming-with-kafka-ckc7aez4900777is1ekl66p9m)
+* [Graph like data using Neo4j Graph Database](https://arpendu.hashnode.dev/5-graph-like-data-using-neo4j-graph-database-ckc7ulc9u001xups11tud2rqj)
 
 ## Running the application in dev mode
 
