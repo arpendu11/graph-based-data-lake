@@ -16,6 +16,7 @@ You can find the repo being used for:
 * [Reactive Stream messaging in Java using Quarkus](https://arpendu.hashnode.dev/3-reactive-stream-messaging-in-java-using-quarkus-ckc269cqu00g091s1el5pgjdn)
 * [Spark SQL Structured Streaming with Kafka](https://arpendu.hashnode.dev/4-spark-sql-structured-streaming-with-kafka-ckc7aez4900777is1ekl66p9m)
 * [Graph like data using Neo4j Graph Database](https://arpendu.hashnode.dev/5-graph-like-data-using-neo4j-graph-database-ckc7ulc9u001xups11tud2rqj)
+* [Build your application and containerize using Docker and Kubernetes](https://arpendu.hashnode.dev/7-build-your-application-and-containerize-using-docker-and-kubernetes-ckchh87lw001bbas19a617ov2)
 
 ## Running the application in dev mode
 
