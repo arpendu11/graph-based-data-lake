@@ -17,7 +17,7 @@
     <quarkus.platform.group-id>io.quarkus</quarkus.platform.group-id>
     <quarkus.platform.version>1.4.2.Final</quarkus.platform.version>
     <scala.version>2.12</scala.version>
-    <spark.version>2.4.3</spark.version>
+    <spark.version>3.4.0</spark.version>
     <surefire-plugin.version>2.22.0</surefire-plugin.version>
   </properties>
   <dependencyManagement>
